@@ -34,7 +34,7 @@ fun homebrew_software_list(): [Text] {
         "redis,false",
         "composer,false",
         "sequel-ace,true",
-        "tencent-lemon,true"
+        "tencent-lemon,true",
         "another-redis-desktop-manager,true"
     ]
 }
