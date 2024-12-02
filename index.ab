@@ -1,7 +1,7 @@
-import { split, contains } from "std/text"
+import { split } from "std/text"
 import { download } from "std/http"
-import { file_write, file_append, dir_exist, file_exist, create_dir, make_executable} from "std/fs"
-import { is_root, exit, error, echo_success, echo_info } from "std/env"
+import { dir_exist, file_exist, create_dir, make_executable} from "std/fs"
+import { error, echo_success, echo_info } from "std/env"
 
 fun install_homebrew(): Text {
     if dir_exist("./tmp") != true {
@@ -82,6 +82,6 @@ loop index, brew_sofeware in brew_list {
     }
 }
 
-// install_amber()
-
 intall_zsh()
+
+install_amber()
