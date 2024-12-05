@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Written in [Amber](https://amber-lang.com/)
 # version: 0.3.5-alpha
-# date: 2024-12-02 21:10:29
+# date: 2024-12-06 00:15:18
 split__3_v0() {
     local text=$1
     local delimiter=$2
@@ -169,81 +169,81 @@ fi
     return 0
 }
 homebrew_software_list__129_v0() {
-    __AMBER_ARRAY_4=("maccy,true" "snipaste,true" "wechat,true" "php,false" "deno,false" "redis,false" "composer,false" "sequel-ace,true" "tencent-lemon,true" "another-redis-desktop-manager,true");
+    __AMBER_ARRAY_4=("maccy,true" "snipaste,true" "wechat,true" "php,false" "deno,false" "redis,false" "composer,false" "sequel-ace,true" "tencent-lemon,true" "another-redis-desktop-manager,true" "fork,true");
     __AF_homebrew_software_list129_v0=("${__AMBER_ARRAY_4[@]}");
     return 0
 }
 install_amber__130_v0() {
     local path="./tmp/amber.sh"
     download__119_v0 "https://raw.githubusercontent.com/amber-lang/amber/master/setup/install.sh" "${path}";
-    __AF_download119_v0__44_5="$__AF_download119_v0";
-    echo "$__AF_download119_v0__44_5" > /dev/null 2>&1
+    __AF_download119_v0__45_5="$__AF_download119_v0";
+    echo "$__AF_download119_v0__45_5" > /dev/null 2>&1
      bash ${path} ;
     __AS=$?;
 if [ $__AS != 0 ]; then
         error__93_v0 "Install amber failed" 1;
-        __AF_error93_v0__46_9="$__AF_error93_v0";
-        echo "$__AF_error93_v0__46_9" > /dev/null 2>&1
+        __AF_error93_v0__47_9="$__AF_error93_v0";
+        echo "$__AF_error93_v0__47_9" > /dev/null 2>&1
 fi
 }
 intall_zsh__131_v0() {
     local path="./tmp/zsh.sh"
     download__119_v0 "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh" "${path}";
-    __AF_download119_v0__52_5="$__AF_download119_v0";
-    echo "$__AF_download119_v0__52_5" > /dev/null 2>&1
+    __AF_download119_v0__53_5="$__AF_download119_v0";
+    echo "$__AF_download119_v0__53_5" > /dev/null 2>&1
      bash ${path} ;
     __AS=$?;
 if [ $__AS != 0 ]; then
         error__93_v0 "Install zsh failed" 1;
-        __AF_error93_v0__54_9="$__AF_error93_v0";
-        echo "$__AF_error93_v0__54_9" > /dev/null 2>&1
+        __AF_error93_v0__55_9="$__AF_error93_v0";
+        echo "$__AF_error93_v0__55_9" > /dev/null 2>&1
 fi
 }
 install_homebrew__128_v0 ;
-__AF_install_homebrew128_v0__58_16="${__AF_install_homebrew128_v0}";
-__0_brew_bin="${__AF_install_homebrew128_v0__58_16}"
+__AF_install_homebrew128_v0__59_16="${__AF_install_homebrew128_v0}";
+__0_brew_bin="${__AF_install_homebrew128_v0__59_16}"
 homebrew_software_list__129_v0 ;
-__AF_homebrew_software_list129_v0__60_17=("${__AF_homebrew_software_list129_v0[@]}");
-__1_brew_list=("${__AF_homebrew_software_list129_v0__60_17[@]}")
+__AF_homebrew_software_list129_v0__61_17=("${__AF_homebrew_software_list129_v0[@]}");
+__1_brew_list=("${__AF_homebrew_software_list129_v0__61_17[@]}")
 index=0;
 for brew_sofeware in "${__1_brew_list[@]}"
 do
     split__3_v0 "${brew_sofeware}" ",";
-    __AF_split3_v0__64_30=("${__AF_split3_v0[@]}");
-    name_and_need_cask=("${__AF_split3_v0__64_30[@]}")
+    __AF_split3_v0__65_30=("${__AF_split3_v0[@]}");
+    name_and_need_cask=("${__AF_split3_v0__65_30[@]}")
     name="${name_and_need_cask[0]}"
     need_cask="${name_and_need_cask[1]}"
     echo_info__90_v0 "Installing ${name}";
-    __AF_echo_info90_v0__68_5="$__AF_echo_info90_v0";
-    echo "$__AF_echo_info90_v0__68_5" > /dev/null 2>&1
+    __AF_echo_info90_v0__69_5="$__AF_echo_info90_v0";
+    echo "$__AF_echo_info90_v0__69_5" > /dev/null 2>&1
     if [ $([ "_${need_cask}" != "_true" ]; echo $?) != 0 ]; then
          ${__0_brew_bin} install --cask ${name} ;
         __AS=$?;
 if [ $__AS != 0 ]; then
             error__93_v0 "Install ${name} failed" 1;
-            __AF_error93_v0__73_13="$__AF_error93_v0";
-            echo "$__AF_error93_v0__73_13" > /dev/null 2>&1
+            __AF_error93_v0__74_13="$__AF_error93_v0";
+            echo "$__AF_error93_v0__74_13" > /dev/null 2>&1
 fi
         echo_success__91_v0 "${name} installed successfully";
-        __AF_echo_success91_v0__76_9="$__AF_echo_success91_v0";
-        echo "$__AF_echo_success91_v0__76_9" > /dev/null 2>&1
+        __AF_echo_success91_v0__77_9="$__AF_echo_success91_v0";
+        echo "$__AF_echo_success91_v0__77_9" > /dev/null 2>&1
 else
          ${__0_brew_bin} install ${name} ;
         __AS=$?;
 if [ $__AS != 0 ]; then
             error__93_v0 "Install ${name} failed" 1;
-            __AF_error93_v0__79_13="$__AF_error93_v0";
-            echo "$__AF_error93_v0__79_13" > /dev/null 2>&1
+            __AF_error93_v0__80_13="$__AF_error93_v0";
+            echo "$__AF_error93_v0__80_13" > /dev/null 2>&1
 fi
         echo_success__91_v0 "${name} installed successfully";
-        __AF_echo_success91_v0__82_9="$__AF_echo_success91_v0";
-        echo "$__AF_echo_success91_v0__82_9" > /dev/null 2>&1
+        __AF_echo_success91_v0__83_9="$__AF_echo_success91_v0";
+        echo "$__AF_echo_success91_v0__83_9" > /dev/null 2>&1
 fi
     (( index++ )) || true
 done
 intall_zsh__131_v0 ;
-__AF_intall_zsh131_v0__86_1="$__AF_intall_zsh131_v0";
-echo "$__AF_intall_zsh131_v0__86_1" > /dev/null 2>&1
+__AF_intall_zsh131_v0__87_1="$__AF_intall_zsh131_v0";
+echo "$__AF_intall_zsh131_v0__87_1" > /dev/null 2>&1
 install_amber__130_v0 ;
-__AF_install_amber130_v0__88_1="$__AF_install_amber130_v0";
-echo "$__AF_install_amber130_v0__88_1" > /dev/null 2>&1
+__AF_install_amber130_v0__89_1="$__AF_install_amber130_v0";
+echo "$__AF_install_amber130_v0__89_1" > /dev/null 2>&1
