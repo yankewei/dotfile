@@ -1,0 +1,89 @@
+import { split } from "std/text"
+import { download } from "std/http"
+import { dir_exist, file_exist, create_dir, make_executable} from "std/fs"
+import { error, echo_success, echo_info } from "std/env"
+
+fun install_homebrew(): Text {
+    if dir_exist("./tmp") != true {
+        create_dir("./tmp")
+    }
+    let path = "./tmp/homebrew.sh"
+
+    if not file_exist(path) {
+        download("https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh", path)
+    }
+
+    make_executable(path)
+
+    $ bash {path} $ failed {
+        error("Install homebrew failed");
+    }
+
+    echo_success("Homebrew installed successfully")
+
+    return "/opt/homebrew/bin/brew"
+}
+
+fun homebrew_software_list(): [Text] {
+    return [
+        "maccy,true",
+        "snipaste,true",
+        "wechat,true",
+        "php,false",
+        "deno,false",
+        "redis,false",
+        "composer,false",
+        "sequel-ace,true",
+        "tencent-lemon,true",
+        "another-redis-desktop-manager,true"
+	"fork,true"
+    ]
+}
+
+fun install_amber() {
+    let path = "./tmp/amber.sh"
+    download("https://raw.githubusercontent.com/amber-lang/amber/master/setup/install.sh", path)
+    $ bash {path} $ failed {
+        error("Install amber failed")
+    }
+}
+
+fun intall_zsh() {
+    let path = "./tmp/zsh.sh"
+    download("https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh", path)
+    $ bash {path} $ failed {
+        error("Install zsh failed")
+    }
+}
+
+let brew_bin = install_homebrew()
+
+let brew_list = homebrew_software_list()
+
+
+loop index, brew_sofeware in brew_list {
+    let name_and_need_cask = split(brew_sofeware, ",")
+    let name = name_and_need_cask[0]
+    let need_cask = name_and_need_cask[1]
+
+    echo_info("Installing {name}")
+
+
+    if need_cask == "true" {
+        $ {brew_bin} install --cask {name} $ failed {
+            error("Install {name} failed")
+        }
+
+        echo_success("{name} installed successfully")
+    } else {
+        $ {brew_bin} install {name} $ failed {
+            error("Install {name} failed")
+        }
+
+        echo_success("{name} installed successfully")
+    }
+}
+
+intall_zsh()
+
+install_amber()

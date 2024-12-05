@@ -1,0 +1,1 @@
+alias phpa="php artisan"
